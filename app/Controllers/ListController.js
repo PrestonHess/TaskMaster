@@ -6,18 +6,22 @@ function _drawLists() {
   let template = '';
   _Store.State.lists.forEach(l => template += l.template);
   document.getElementById("drawLists").innerHTML = template;
+  _drawTasks();
 }
 
 function _drawTasks() {
-  let template = '';
-  let tasks = _Store.State.lists;
+  // TODO Need to render tasks on the correct list
+  _Store.State.lists.forEach(l => {
+    let taskTemplate = '';
+    l.tasks.forEach(t => taskTemplate += t.getTemplate());
+    document.getElementById(`drawTasks-${l.id}`).innerHTML = taskTemplate;
+  });
 }
 
 //Public
 export default class ListController {
   constructor() {
     //NOTE: After the store loads, we can automatically call to draw the lists.
-    console.log('Controller Works');
     _drawLists();
   }
 
@@ -35,12 +39,16 @@ export default class ListController {
 
 
   addTask(event, listId) {
+    debugger
     event.preventDefault();
-    let taskData = event.target;
-    _ListService.addTask(taskData.task.value, listId);
+    let formData = event.target;
+    let taskData = {
+      task : formData.task.value
+    }
+    _ListService.addTask(taskData, listId);
     
-    taskData.reset();
+    _drawLists();
+    formData.reset();
   }
-
   //TODO: Your app will need the ability to create, and delete both lists and listItems
 }

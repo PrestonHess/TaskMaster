@@ -1,10 +1,11 @@
 import List from "../Models/List.js";
-import _Store from "../store.js"
+import Task from "../Models/Task.js";
+import _Store from "../store.js";
 
 //Public
 class ListService {
   constructor() {
-    console.log("Service works");
+    
   }
 
   //TODO  Here is where we handle all of our business logic,
@@ -14,10 +15,13 @@ class ListService {
   create(listData) {
     let newList = new List(listData)
     _Store.State.lists.push(newList)
+    _Store.saveState();
   }
-  addTask(task, listId) {
-    let currentList = _Store.State.lists.find(l => l.id = listId)
-    currentList.tasks.push(task);
+  addTask(taskData, listId) {
+    let newTask = new Task(taskData)
+    let currentList = _Store.State.lists.find(l => l.id == listId)
+    currentList.tasks.push(newTask);
+    _Store.saveState();
   }
 
 }

@@ -1,9 +1,12 @@
 import { generateId } from "../utils.js";
+import Tasks from "../Models/Task.js"
 
 export default class List {
+  
   constructor(data) {
     //TODO Your constructor takes in a data object that should have the properties you need to create your list here is a freebie, it will set the id its provided, or if that is undefined it will create a new one (this is an alternative to object destructuring)
     this.listName = data.listName
+    /** @type {Tasks[]} */
     this.tasks = [];
     this.id = data.id || generateId();
   }
@@ -14,11 +17,15 @@ export default class List {
       <div class="col-4">
       <div class="card" style="width: 18rem;">
       <div class="card-header">
-        <h3>${this.listName}</h3>
+        <div class="text-uppercase font-weight-bold text-center">${this.listName}</div>
+        <span>
+          <button type="button" class="close text-danger" onclick="app.listController.delete('${this.id}')">
+            <span>&times;</span>
+          </button>
+        </span>
         </div>
+          <ul id="drawTasks-${this.id}" class="list-group list-group-flush"><!--Draw Tasks--></ul>
           <ul class="list-group list-group-flush">
-            <li class="list-group-item">Cras justo odio</li>
-            <li class="list-group-item">Dapibus ac facilisis in</li>
             <li class="list-group-item">
               <form class="input-group mb-3" onsubmit="app.listController.addTask(event, '${this.id}')">
                 <div class="input-group-prepend">
@@ -31,5 +38,11 @@ export default class List {
          </div>
       </div>
     `
+  }
+
+  taskTemplate (task) {
+    let template = '';
+    this.tasks.forEach(t => template += t.getTemplate)
+    return template;
   }
 }
