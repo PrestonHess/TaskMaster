@@ -11,6 +11,7 @@ function _drawLists() {
 
 function _drawTasks() {
   // TODO Need to render tasks on the correct list
+  debugger;
   _Store.State.lists.forEach(l => {
     let taskTemplate = '';
     l.tasks.forEach(t => taskTemplate += t.getTemplate());

@@ -15,7 +15,7 @@ export default class List {
   get template() {
     return /*html*/ `
       <div class="col-10 col-sm-6 col-md-4 my-2">
-      <div class="card">
+      <div class="card shadow">
       <div class="card-header">
         <div class="text-uppercase font-weight-bold text-center">
           ${this.listName}
@@ -29,9 +29,9 @@ export default class List {
           <ul id="drawTasks-${this.id}" class="list-group list-group-flush"><!--Draw Tasks--></ul>
           <ul class="list-group list-group-flush">
             <li class="list-group-item">
-              <form class="input-group mb-3" onsubmit="app.listController.addTask(event, '${this.id}')">
+              <form class="input-group my-1" onsubmit="app.listController.addTask(event, '${this.id}')">
                 <div class="input-group-prepend">
-                  <button class="btn btn-outline-danger" type="submit">+</button>
+                  <button class="btn btn-outline-success" type="submit">+</button>
                 </div>
                 <input type="text" name="task" class="form-control" placeholder="Add Task" aria-describedby="basic-addon1">
               </form>
