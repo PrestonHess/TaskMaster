@@ -7,12 +7,15 @@ export default class Task {
   }
 
   getTemplate () {
-    return /*html*/  `
+    return /*html*/ `
       <li class="list-group-item">
-      ${this.taskName} 
-      <button type="button" class="close text-danger" onclick="app.listController.deleteTask('${this.id}')">
-        <span>&times;</span>
-      </button>
+      <div class="custom-control custom-checkbox mr-sm-2">
+        <input type="checkbox" class="custom-control-input" id="customControlAutosizing">
+        <label class="custom-control-label" for="customControlAutosizing">${this.taskName}</label>
+        <button type="button" class="close text-danger" onclick="app.listController.deleteTask('${this.id}')">
+          <span>&times;</span>
+        </button>
+      </div>
       </li>
     `
   }

@@ -14,15 +14,17 @@ export default class List {
   //For starting out, your tasks may be strings alone, but later you may wish to turn them into full objects, that will be up to you
   get template() {
     return /*html*/ `
-      <div class="col-4">
-      <div class="card" style="width: 18rem;">
+      <div class="col-10 col-sm-6 col-md-4 my-2">
+      <div class="card">
       <div class="card-header">
-        <div class="text-uppercase font-weight-bold text-center">${this.listName}</div>
-        <span>
-          <button type="button" class="close text-danger" onclick="app.listController.delete('${this.id}')">
-            <span>&times;</span>
-          </button>
-        </span>
+        <div class="text-uppercase font-weight-bold text-center">
+          ${this.listName}
+          <span>
+            <button type="button" class="close text-danger" onclick="app.listController.delete('${this.id}')">
+              <span>&times;</span>
+            </button>
+          </span>
+        </div>
         </div>
           <ul id="drawTasks-${this.id}" class="list-group list-group-flush"><!--Draw Tasks--></ul>
           <ul class="list-group list-group-flush">
@@ -40,9 +42,4 @@ export default class List {
     `
   }
 
-  // taskTemplate (task) {
-  //   let template = '';
-  //   this.tasks.forEach(t => template += t.getTemplate)
-  //   return template;
-  // }
 }
