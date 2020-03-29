@@ -8,7 +8,12 @@ export default class Task {
 
   getTemplate () {
     return /*html*/  `
-      <li class="list-group-item">${this.taskName}</li>
+      <li class="list-group-item">
+      ${this.taskName} 
+      <button type="button" class="close text-danger" onclick="app.listController.deleteTask('${this.id}')">
+        <span>&times;</span>
+      </button>
+      </li>
     `
   }
 }

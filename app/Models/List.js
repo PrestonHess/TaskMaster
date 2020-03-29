@@ -29,7 +29,7 @@ export default class List {
             <li class="list-group-item">
               <form class="input-group mb-3" onsubmit="app.listController.addTask(event, '${this.id}')">
                 <div class="input-group-prepend">
-                  <button class="btn btn-outline-secondary" type="submit">+</button>
+                  <button class="btn btn-outline-danger" type="submit">+</button>
                 </div>
                 <input type="text" name="task" class="form-control" placeholder="Add Task" aria-describedby="basic-addon1">
               </form>
@@ -40,9 +40,9 @@ export default class List {
     `
   }
 
-  taskTemplate (task) {
-    let template = '';
-    this.tasks.forEach(t => template += t.getTemplate)
-    return template;
-  }
+  // taskTemplate (task) {
+  //   let template = '';
+  //   this.tasks.forEach(t => template += t.getTemplate)
+  //   return template;
+  // }
 }

@@ -4,6 +4,23 @@ import _Store from "../store.js";
 
 //Public
 class ListService {
+  deleteTask(taskId) {
+    let taskIndex = 0;
+    _Store.State.lists.forEach((list, listIndex) => {
+      list.tasks.forEach((t, i) => {
+        if (t.id == taskId) {
+          taskIndex = i;
+          _Store.State.lists[listIndex].tasks.splice(taskIndex, 1);
+        }
+      })
+    })
+    _Store.saveState();
+  }
+  delete(id) {
+    let listIndex = _Store.State.lists.findIndex(list => list.id == id);
+    _Store.State.lists.splice(listIndex, 1);
+    _Store.saveState();
+  }
   constructor() {
     
   }
