@@ -2,11 +2,11 @@ import  { generateId } from '../utils.js'
 
 export default class Task {
   constructor(data){
-    this.taskName = data.task
+    this.taskName = data.taskName
     this.id = data.id || generateId()
   }
 
-  getTemplate () {
+  get taskTemplate () {
     return /*html*/ `
       <li class="list-group-item">
       <div class="custom-control custom-checkbox mr-sm-2">

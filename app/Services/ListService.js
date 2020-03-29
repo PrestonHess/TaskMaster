@@ -23,9 +23,7 @@ class ListService {
       let newTask = new Task(taskData)
       let currentList = _Store.State.lists.find(l => l.id == listId)
       currentList.tasks.push(newTask);
-      console.log('Current list and tasks', currentList)
       _Store.saveState();
-      console.log('Currently in store',_Store)
     }
   }
   deleteTask(taskId) {

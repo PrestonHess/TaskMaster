@@ -14,7 +14,7 @@ function _drawTasks() {
   debugger;
   _Store.State.lists.forEach(l => {
     let taskTemplate = '';
-    l.tasks.forEach(t => taskTemplate += t.getTemplate());
+    l.tasks.forEach(t => taskTemplate += t.taskTemplate);
     document.getElementById(`drawTasks-${l.id}`).innerHTML = taskTemplate;
   });
 }
@@ -38,13 +38,12 @@ export default class ListController {
     formData.reset();
   }
 
-
   addTask(event, listId) {
     debugger
     event.preventDefault();
     let formData = event.target;
     let taskData = {
-      task : formData.task.value
+      taskName : formData.task.value
     }
     _ListService.addTask(taskData, listId);
     
