@@ -4,8 +4,19 @@ import _Store from "../store.js";
 
 //Public
 class ListService {
+  toggleTags(Id) {
+    debugger;
+    _Store.State.lists.forEach((list) => {
+      list.tasks.forEach(t => {
+        if (t.id == Id) {
+          t.complete = !t.complete
+          console.log(t.complete)
+        }
+      })
+    })
+    _Store.saveState();
+  }
   constructor() {
-
   }
   //TODO  Here is where we handle all of our business logic,
   //given the information you need in the controller,

@@ -25,6 +25,11 @@ export default class ListController {
     _drawLists();
   }
 
+  toggleTags(id) {
+    console.log('worked?')
+    _ListService.toggleTags(id);
+  }
+
   create(event){
     event.preventDefault();
     let formData = event.target;
