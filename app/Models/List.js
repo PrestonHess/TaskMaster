@@ -8,6 +8,7 @@ export default class List {
     this.listName = data.listName
     /** @type {Tasks[]} */
     this.tasks = data.tasks || [];
+    this.color = data.listColor || data.color;
     this.id = data.id || generateId();
   }
   //Be sure to add the methods needed to create the view template for this model
@@ -16,11 +17,11 @@ export default class List {
     return /*html*/ `
       <div class="col-10 col-sm-6 col-md-4 my-2">
       <div class="card shadow">
-      <div class="card-header">
+      <div style="background-color: ${this.color}" class="card-header">
         <div class="text-uppercase font-weight-bold text-center">
           ${this.listName}
           <span>
-            <button type="button" class="close text-danger" onclick="app.listController.delete('${this.id}')">
+            <button type="button" class="close" onclick="app.listController.delete('${this.id}')">
               <span>&times;</span>
             </button>
           </span>

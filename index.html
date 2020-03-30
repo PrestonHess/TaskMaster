@@ -29,8 +29,12 @@
             <form class="input-group my-3" onsubmit="app.listController.create(event)">
               <input type="text" class="form-control" name="listName" placeholder="Create Todo List.." aria-describedby="basic-addon2">
               <div class="input-group-append">
-                <button class="btn btn-outline-secondary" type="submit">Add List</button>
+                <button class="btn btn-outline-secondary" type="submit">
+                  Add List
+                </button>
               </div>
+                <label class="ml-4  align-self-center" for="listColor">Choose List Color..</label>
+                <input class="ml-2 align-self-center" type="color" id="head" name="listColor" value="#e66465">
             </form>
           </div>
         </div>

@@ -29,7 +29,8 @@ export default class ListController {
     event.preventDefault();
     let formData = event.target;
     let newList = {
-      listName: formData.listName.value
+      listName: formData.listName.value,
+      listColor: formData.listColor.value
     }
     _ListService.create(newList);
 
